@@ -10,7 +10,9 @@
     --cocoa-soft:#7a5a45;
     --cream:#fff8f0;
     --sage:#8a9a6b;
-    --accent:#d9834f;
+    --accent:#c96f3f;
+    --skin:#f0b98a;
+    --skin-shadow:#dba06e;
   }
   *{box-sizing:border-box;margin:0;padding:0;}
   body{
@@ -27,133 +29,247 @@
     justify-content:center;
     text-align:center;
     padding:20px;
-    background:linear-gradient(180deg, #fff8f0 0%, #f7e9d8 100%);
+    background:linear-gradient(180deg, #fff8f0 0%, #f3e2cd 100%);
+    position:relative;
   }
   .chef-stage{
-    width:220px;
-    height:280px;
+    width:240px;
+    height:300px;
     position:relative;
-    margin-bottom:10px;
+    margin-bottom:6px;
   }
+
+  .chef-shadow{
+    position:absolute;
+    bottom:2px;
+    left:50%;
+    transform:translateX(-50%);
+    width:130px;
+    height:18px;
+    background:radial-gradient(ellipse at center, rgba(74,47,34,0.18) 0%, rgba(74,47,34,0) 70%);
+  }
+
   .chef-body{
-    width:140px;
-    height:170px;
-    background:var(--accent);
-    border-radius:70px 70px 40px 40px;
+    width:150px;
+    height:175px;
+    background:linear-gradient(180deg,#ffffff 0%, #f2ede6 100%);
+    border-radius:60px 60px 30px 30px;
     position:absolute;
-    bottom:0;
+    bottom:18px;
     left:50%;
     transform:translateX(-50%);
+    box-shadow:inset -8px 0 14px rgba(0,0,0,0.05), 0 6px 10px rgba(74,47,34,0.10);
   }
-  .chef-hat{
-    width:110px;
-    height:90px;
-    background:#fff;
-    border-radius:50% 50% 10px 10px;
+  .chef-buttons{
     position:absolute;
-    top:10px;
+    top:30px;
     left:50%;
     transform:translateX(-50%);
-    box-shadow:0 3px 6px rgba(0,0,0,0.1);
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+  }
+  .chef-buttons span{
+    width:6px;height:6px;border-radius:50%;
+    background:var(--cocoa-soft);
+    opacity:0.55;
+    display:block;
+    margin:0 auto;
+  }
+
+  .chef-collar{
+    width:60px;
+    height:28px;
+    background:var(--accent);
+    position:absolute;
+    top:112px;
+    left:50%;
+    transform:translateX(-50%);
+    border-radius:0 0 16px 16px;
+    z-index:2;
+  }
+
+  .chef-hat{
+    width:100px;
+    height:85px;
+    background:linear-gradient(180deg,#ffffff 0%, #efe9e2 100%);
+    border-radius:50% 50% 8px 8px;
+    position:absolute;
+    top:8px;
+    left:50%;
+    transform:translateX(-50%);
+    box-shadow:0 3px 8px rgba(0,0,0,0.12);
+    z-index:3;
   }
   .chef-hat::before{
     content:'';
     position:absolute;
-    bottom:-8px;
-    left:-10px;
-    width:130px;
-    height:22px;
-    background:#fff;
-    border-radius:10px;
+    bottom:-6px;
+    left:-8px;
+    width:116px;
+    height:18px;
+    background:linear-gradient(180deg,#ffffff 0%, #eee7dd 100%);
+    border-radius:9px;
+    box-shadow:0 2px 4px rgba(0,0,0,0.10);
   }
-  .chef-face{
-    width:90px;
-    height:90px;
-    background:#f4c396;
+
+  .chef-head{
+    width:88px;
+    height:92px;
+    background:linear-gradient(160deg, var(--skin) 60%, var(--skin-shadow) 100%);
+    border-radius:48% 48% 44% 44%;
+    position:absolute;
+    top:62px;
+    left:50%;
+    transform:translateX(-50%);
+    z-index:2;
+  }
+  .chef-ear{
+    width:14px;height:20px;
+    background:var(--skin);
     border-radius:50%;
     position:absolute;
-    top:70px;
+    top:96px;
+  }
+  .chef-ear.left{left:80px;}
+  .chef-ear.right{right:80px;}
+
+  .chef-eyebrow{
+    width:16px;height:3px;
+    background:#6b4630;
+    border-radius:3px;
+    position:absolute;
+    top:96px;
+  }
+  .chef-eyebrow.left{left:71px; transform:rotate(-6deg);}
+  .chef-eyebrow.right{right:71px; transform:rotate(6deg);}
+
+  .chef-eye{
+    width:7px;
+    height:9px;
+    background:#3b2a1e;
+    border-radius:50%;
+    position:absolute;
+    top:104px;
+  }
+  .chef-eye.left{left:73px;}
+  .chef-eye.right{right:73px;}
+
+  .chef-cheek{
+    width:16px;height:9px;
+    background:#e8886b;
+    border-radius:50%;
+    opacity:0.35;
+    position:absolute;
+    top:122px;
+  }
+  .chef-cheek.left{left:64px;}
+  .chef-cheek.right{right:64px;}
+
+  .chef-mustache{
+    width:34px;
+    height:8px;
+    background:#7a5236;
+    border-radius:40% 40% 60% 60%;
+    position:absolute;
+    top:130px;
     left:50%;
     transform:translateX(-50%);
   }
-  .chef-eye{
-    width:8px;
-    height:8px;
-    background:var(--cocoa);
-    border-radius:50%;
-    position:absolute;
-    top:38px;
-  }
-  .chef-eye.left{left:25px;}
-  .chef-eye.right{right:25px;}
   .chef-smile{
-    width:30px;
-    height:15px;
-    border-bottom:4px solid var(--cocoa);
+    width:26px;
+    height:13px;
+    border-bottom:3.5px solid #7a3a2b;
     border-radius:0 0 20px 20px;
     position:absolute;
-    top:52px;
+    top:136px;
     left:50%;
     transform:translateX(-50%);
   }
+
   .chef-arm{
-    width:18px;
-    height:70px;
-    background:#f4c396;
-    border-radius:10px;
+    width:20px;
+    height:74px;
+    background:linear-gradient(180deg,#ffffff 0%, #f2ede6 100%);
+    border-radius:12px;
     position:absolute;
-    top:90px;
+    top:100px;
     transform-origin:top center;
+    box-shadow:inset -4px 0 6px rgba(0,0,0,0.06);
+    z-index:1;
   }
   .chef-arm.left{
-    left:15px;
-    transform:rotate(15deg);
+    left:32px;
+    transform:rotate(18deg);
   }
   .chef-arm.right{
-    right:15px;
-    animation:wave 1.2s ease-in-out infinite;
+    right:32px;
+    animation:wave 1.1s ease-in-out infinite;
   }
+  .chef-hand{
+    width:20px;height:20px;
+    background:var(--skin);
+    border-radius:50%;
+    position:absolute;
+    top:174px;
+  }
+  .chef-hand.left{
+    left:31px;
+    transform-origin: 10px -74px;
+    transform:rotate(18deg);
+  }
+  .chef-hand.right{
+    right:32px;
+    transform-origin: 10px -74px;
+    animation:wave 1.1s ease-in-out infinite;
+  }
+
   @keyframes wave{
-    0%,100%{transform:rotate(20deg);}
-    50%{transform:rotate(60deg);}
+    0%,100%{transform:rotate(18deg);}
+    50%{transform:rotate(62deg);}
   }
+
   .greeting{
-    font-size:26px;
-    font-weight:600;
-    margin-top:10px;
+    font-size:27px;
+    font-weight:700;
+    margin-top:8px;
+    letter-spacing:-0.2px;
     opacity:0;
-    animation:fadeUp 1s ease forwards 0.4s;
+    animation:fadeUp 0.9s ease forwards 0.35s;
   }
   .subtext{
     font-size:15px;
     color:var(--cocoa-soft);
     margin-top:8px;
     max-width:320px;
+    line-height:1.5;
     opacity:0;
-    animation:fadeUp 1s ease forwards 0.8s;
+    animation:fadeUp 0.9s ease forwards 0.7s;
   }
   @keyframes fadeUp{
     from{opacity:0; transform:translateY(15px);}
     to{opacity:1; transform:translateY(0);}
   }
   .enter-btn{
-    margin-top:26px;
-    padding:14px 32px;
+    margin-top:24px;
+    padding:14px 34px;
     background:var(--cocoa);
     color:var(--cream);
     border:none;
     border-radius:30px;
     font-size:16px;
+    font-weight:600;
     cursor:pointer;
+    box-shadow:0 6px 14px rgba(74,47,34,0.25);
     opacity:0;
-    animation:fadeUp 1s ease forwards 1.2s;
+    animation:fadeUp 0.9s ease forwards 1.05s;
   }
   .video-note{
     position:absolute;
     bottom:16px;
     font-size:11px;
     color:var(--cocoa-soft);
-    opacity:0.6;
+    opacity:0.55;
   }
 </style>
 </head>
@@ -161,15 +277,31 @@
 
 <div class="hero">
   <div class="chef-stage">
-    <div class="chef-body"></div>
+    <div class="chef-shadow"></div>
+
     <div class="chef-arm left"></div>
     <div class="chef-arm right"></div>
-    <div class="chef-hat"></div>
-    <div class="chef-face">
+    <div class="chef-hand left"></div>
+    <div class="chef-hand right"></div>
+
+    <div class="chef-body">
+      <div class="chef-buttons"><span></span><span></span><span></span></div>
+    </div>
+    <div class="chef-collar"></div>
+
+    <div class="chef-head">
+      <div class="chef-ear left"></div>
+      <div class="chef-ear right"></div>
+      <div class="chef-eyebrow left"></div>
+      <div class="chef-eyebrow right"></div>
       <div class="chef-eye left"></div>
       <div class="chef-eye right"></div>
+      <div class="chef-cheek left"></div>
+      <div class="chef-cheek right"></div>
+      <div class="chef-mustache"></div>
       <div class="chef-smile"></div>
     </div>
+    <div class="chef-hat"></div>
   </div>
 
   <div class="greeting">Hello there! Welcome to Bottle Bakery</div>
