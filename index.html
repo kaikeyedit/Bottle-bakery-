@@ -33,14 +33,6 @@
     width:230px;
     height:auto;
   }
-  .wave-arm{
-    transform-box: view-box;
-    animation:wave 1.1s ease-in-out infinite;
-  }
-  @keyframes wave{
-    0%,100%{transform:rotate(15deg);}
-    50%{transform:rotate(60deg);}
-  }
   .greeting{
     font-size:26px;
     font-weight:600;
@@ -95,7 +87,8 @@
 
     <!-- right arm (waving) -->
     <g transform="translate(148,125)">
-      <g class="wave-arm">
+      <g>
+        <animateTransform attributeName="transform" attributeType="XML" type="rotate" values="15;60;15" dur="1.1s" repeatCount="indefinite"/>
         <rect x="-9" y="0" width="18" height="65" rx="9" fill="var(--skin)" stroke="var(--cocoa)" stroke-width="2.5"/>
         <circle cx="0" cy="65" r="10" fill="var(--skin)" stroke="var(--cocoa)" stroke-width="2.5"/>
       </g>
