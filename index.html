@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bottle Bakery</title>
+<style>
+  :root{
+    --cocoa:#4a2f22;
+    --cocoa-soft:#7a5a45;
+    --cream:#fff8f0;
+    --sage:#8a9a6b;
+    --accent:#d9834f;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{
+    font-family:'Segoe UI', Arial, sans-serif;
+    background:var(--cream);
+    color:var(--cocoa);
+    overflow-x:hidden;
+  }
+  .hero{
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:20px;
+    background:linear-gradient(180deg, #fff8f0 0%, #f7e9d8 100%);
+  }
+  .chef-stage{
+    width:220px;
+    height:280px;
+    position:relative;
+    margin-bottom:10px;
+  }
+  .chef-body{
+    width:140px;
+    height:170px;
+    background:var(--accent);
+    border-radius:70px 70px 40px 40px;
+    position:absolute;
+    bottom:0;
+    left:50%;
+    transform:translateX(-50%);
+  }
+  .chef-hat{
+    width:110px;
+    height:90px;
+    background:#fff;
+    border-radius:50% 50% 10px 10px;
+    position:absolute;
+    top:10px;
+    left:50%;
+    transform:translateX(-50%);
+    box-shadow:0 3px 6px rgba(0,0,0,0.1);
+  }
+  .chef-hat::before{
+    content:'';
+    position:absolute;
+    bottom:-8px;
+    left:-10px;
+    width:130px;
+    height:22px;
+    background:#fff;
+    border-radius:10px;
+  }
+  .chef-face{
+    width:90px;
+    height:90px;
+    background:#f4c396;
+    border-radius:50%;
+    position:absolute;
+    top:70px;
+    left:50%;
+    transform:translateX(-50%);
+  }
+  .chef-eye{
+    width:8px;
+    height:8px;
+    background:var(--cocoa);
+    border-radius:50%;
+    position:absolute;
+    top:38px;
+  }
+  .chef-eye.left{left:25px;}
+  .chef-eye.right{right:25px;}
+  .chef-smile{
+    width:30px;
+    height:15px;
+    border-bottom:4px solid var(--cocoa);
+    border-radius:0 0 20px 20px;
+    position:absolute;
+    top:52px;
+    left:50%;
+    transform:translateX(-50%);
+  }
+  .chef-arm{
+    width:18px;
+    height:70px;
+    background:#f4c396;
+    border-radius:10px;
+    position:absolute;
+    top:90px;
+    transform-origin:top center;
+  }
+  .chef-arm.left{
+    left:15px;
+    transform:rotate(15deg);
+  }
+  .chef-arm.right{
+    right:15px;
+    animation:wave 1.2s ease-in-out infinite;
+  }
+  @keyframes wave{
+    0%,100%{transform:rotate(20deg);}
+    50%{transform:rotate(60deg);}
+  }
+  .greeting{
+    font-size:26px;
+    font-weight:600;
+    margin-top:10px;
+    opacity:0;
+    animation:fadeUp 1s ease forwards 0.4s;
+  }
+  .subtext{
+    font-size:15px;
+    color:var(--cocoa-soft);
+    margin-top:8px;
+    max-width:320px;
+    opacity:0;
+    animation:fadeUp 1s ease forwards 0.8s;
+  }
+  @keyframes fadeUp{
+    from{opacity:0; transform:translateY(15px);}
+    to{opacity:1; transform:translateY(0);}
+  }
+  .enter-btn{
+    margin-top:26px;
+    padding:14px 32px;
+    background:var(--cocoa);
+    color:var(--cream);
+    border:none;
+    border-radius:30px;
+    font-size:16px;
+    cursor:pointer;
+    opacity:0;
+    animation:fadeUp 1s ease forwards 1.2s;
+  }
+  .video-note{
+    position:absolute;
+    bottom:16px;
+    font-size:11px;
+    color:var(--cocoa-soft);
+    opacity:0.6;
+  }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="chef-stage">
+    <div class="chef-body"></div>
+    <div class="chef-arm left"></div>
+    <div class="chef-arm right"></div>
+    <div class="chef-hat"></div>
+    <div class="chef-face">
+      <div class="chef-eye left"></div>
+      <div class="chef-eye right"></div>
+      <div class="chef-smile"></div>
+    </div>
+  </div>
+
+  <div class="greeting">Hello there! Welcome to Bottle Bakery</div>
+  <div class="subtext">Freshly baked, always with a smile. Step in and see what we're baking today.</div>
+  <button class="enter-btn" onclick="alert('This would take you to the menu page next.')">Enter the Bakery</button>
+
+  <div class="video-note">Placeholder animation — real video coming soon</div>
+</div>
+
+</body>
+</html>
