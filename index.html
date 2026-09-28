@@ -1,1 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bottle Bakery</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;1,400;1,500&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--choc:#2b1a12;--cream:#f7f1e6;--paper:#efe6d6;--ink:#2b1a12;--muted:#7a6656;--gold:#b8863b;
+--serif:'Playfair Display',Georgia,serif;--sans:'DM Sans',system-ui,sans-serif}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--cream);color:var(--ink);font-family:var(--sans);line-height:1.6}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+.wrap{max-width:1180px;margin:0 auto;padding:0 20px}
+h1,h2,h3{font-family:var(--serif);font-style:italic;font-weight:400;line-height:1.1}
+h1{font-size:clamp(2.6rem,9vw,5.5rem)}
+h2{font-size:clamp(2rem,6vw,3.4rem);margin-bottom:16px}
+h3{font-size:1.4rem}
+section{padding:72px 0}
+.btn{display:inline-block;font-family:var(--sans);font-weight:500;letter-spacing:.04em;padding:12px 4px;cursor:pointer;background:none;border:0;color:inherit;font-size:1rem}
+.btn::before{content:"[ "}.btn::after{content:" ]"}
+.btn:hover{color:var(--gold)}
+/* Image slots: to use a real photo, add style="--img:url('photo.jpg')" to the element */
+.ph{background:var(--img,none),linear-gradient(135deg,var(--c1,#c89a62),var(--c2,#8a5a34));background-size:cover;background-position:center;position:relative;min-height:260px}
+nav{background:var(--choc);color:var(--cream);position:sticky;top:0;z-index:20}
+nav .wrap{display:flex;justify-content:space-between;align-items:center;height:64px}
+.logo{font-family:var(--serif);font-style:italic;font-size:1.5rem}
+.links{display:flex;gap:28px}
+.links a:hover{color:var(--gold)}
+.menu-btn{display:none;background:none;border:0;color:var(--cream);font-size:1rem;cursor:pointer}
+@media(max-width:760px){.menu-btn{display:block}.links.nav-links{display:none;position:absolute;top:64px;left:0;right:0;background:var(--choc);flex-direction:column;padding:8px 20px 20px;gap:14px}.links.nav-links.open{display:flex}}
+.hero{padding:0;background:var(--choc);color:var(--cream)}
+.hero .wrap{display:grid;grid-template-columns:1.1fr 1fr;padding:0}
+.hero-t{padding:80px 20px;display:flex;flex-direction:column;justify-content:center;gap:24px}
+.hero-t p{max-width:42ch;color:#e8dcc8}
+.hero .ph{min-height:520px}
+@media(max-width:760px){.hero .wrap{grid-template-columns:1fr}.hero .ph{min-height:320px;order:-1}.hero-t{padding:40px 20px 56px}}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+.split p{max-width:52ch;color:var(--muted);margin-bottom:24px}
+.split .ph{min-height:440px}
+@media(max-width:760px){.split{grid-template-columns:1fr;gap:28px}.split .ph{min-height:300px}}
+.marq{background:var(--choc);color:var(--cream);overflow:hidden;padding:18px 0;white-space:nowrap}
+.marq div{display:inline-block;animation:slide 28s linear infinite;font-family:var(--serif);font-style:italic;font-size:1.5rem}
+.marq span{margin:0 28px}
+@keyframes slide{to{transform:translateX(-50%)}}
+@media(prefers-reduced-motion:reduce){.marq div{animation:none}}
+.cat{margin-top:48px;font-size:1.8rem;border-bottom:1px solid #2b1a1233;padding-bottom:8px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:28px;margin-top:36px}
+.card .ph{min-height:300px;margin-bottom:14px}
+.card p{color:var(--muted);font-size:.95rem}
+.price{font-weight:500;margin-top:4px}
+.alt{background:var(--paper)}
+.steps{list-style:none;margin:28px 0}
+.steps li{padding:16px 0;border-top:1px solid #2b1a1233}
+.steps b{font-family:var(--serif);font-style:italic;font-weight:400;font-size:1.25rem;display:block}
+.steps span{color:var(--muted)}
+.banner{min-height:420px;display:flex;align-items:center;justify-content:center;text-align:center;padding:0;color:#fff}
+.banner h2{position:relative;text-shadow:0 2px 20px #0008;padding:0 20px;margin:0}
+.banner::before{content:"";position:absolute;inset:0;background:#2b1a1266}
+.whole{background:var(--choc);color:var(--cream)}
+.whole p{max-width:60ch;color:#e8dcc8;margin-bottom:24px}
+.quotes{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:36px;margin-top:36px}
+blockquote{font-family:var(--serif);font-style:italic;font-size:1.25rem;line-height:1.45}
+blockquote cite{display:block;font-family:var(--sans);font-style:normal;font-size:.9rem;color:var(--muted);margin-top:12px}
+.strip{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:6px}
+.strip .ph{min-height:180px}
+.contact{display:grid;grid-template-columns:1fr 1fr;gap:56px}
+@media(max-width:760px){.contact{grid-template-columns:1fr;gap:32px}}
+.contact p{margin-bottom:6px;color:var(--muted)}
+form{display:grid;gap:14px}
+input,textarea{width:100%;padding:12px;border:1px solid #2b1a1244;background:transparent;font:inherit;color:inherit}
+textarea{min-height:110px;resize:vertical}
+.ok{color:var(--gold);min-height:1.5em}
+footer.site{background:var(--choc);color:var(--cream);padding:48px 0 28px}
+footer.site .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:24px}
+footer.site small{width:100%;color:#b9a892;border-top:1px solid #fff2;padding-top:18px}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="logo" href="#top">Bottle Bakery</a>
+    <button class="menu-btn" id="mb" aria-label="Open menu">Menu</button>
+    <div class="links nav-links" id="lk">
+      <a href="#menu">Menu</a><a href="#process">Process</a><a href="#wholesale">Wholesale</a><a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <div class="hero-t">
+      <h1>Baked slowly.<br>Shared warmly.</h1>
+      <p>Small-batch breads, cakes and pastries, made fresh every morning and ready for pickup by noon.</p>
+      <div><a class="btn" href="#menu">See what's baking</a></div>
+    </div>
+    <div class="ph" style="--c1:#d9a86a;--c2:#7a4a2a"></div>
+  </div>
+</header>
+
+<section>
+  <div class="wrap split">
+    <div>
+      <h2>Fresh from the oven, every morning</h2>
+      <p>We start at 4 a.m. so your loaf is still warm when it reaches you. No shortcuts, no preservatives, just butter, flour and patience.</p>
+      <a class="btn" href="#menu">Order today</a>
+    </div>
+    <div class="ph" style="--c1:#e0b97e;--c2:#9a6238"></div>
+  </div>
+</section>
+
+<div class="marq" aria-hidden="true"><div>
+  <span>Sourdough</span><span>Croissants</span><span>Cakes</span><span>Cookies</span><span>Brownies</span><span>Buns</span>
+  <span>Sourdough</span><span>Croissants</span><span>Cakes</span><span>Cookies</span><span>Brownies</span><span>Buns</span>
+</div></div>
+
+<section id="menu">
+  <div class="wrap">
+    <h2>Our bakes</h2>
+    <p style="color:var(--muted)">Pay when you pick up. Ask us about custom cakes.</p>
+    <h3 class="cat">Breads</h3>
+    <div class="grid">
+      <article class="card"><div class="ph" style="--c1:#d8a45f;--c2:#8b5a2b"></div><h3>Sourdough loaf</h3><p>Slow-fermented, crackly crust.</p><div class="price">₹180</div></article>
+      <article class="card"><div class="ph" style="--c1:#e6c48a;--c2:#a5733a"></div><h3>Multigrain loaf</h3><p>Soft, seedy and wholesome.</p><div class="price">₹160</div></article>
+      <article class="card"><div class="ph" style="--c1:#f0d7a8;--c2:#c08a4e"></div><h3>Garlic bread</h3><p>Buttery and toasted.</p><div class="price">₹120</div></article>
+    </div>
+    <h3 class="cat">Cakes</h3>
+    <div class="grid">
+      <article class="card"><div class="ph" style="--c1:#6b3b26;--c2:#2b1a12"></div><h3>Chocolate cake</h3><p>Dark sponge with ganache.</p><div class="price">₹650</div></article>
+      <article class="card"><div class="ph" style="--c1:#f4d9c6;--c2:#d89a8a"></div><h3>Red velvet cake</h3><p>Cream cheese frosting.</p><div class="price">₹700</div></article>
+      <article class="card"><div class="ph" style="--c1:#f7e3a8;--c2:#d9a94a"></div><h3>Pineapple cake</h3><p>Light and fruity.</p><div class="price">₹550</div></article>
+    </div>
+    <h3 class="cat">Pancakes and waffles</h3>
+    <div class="grid">
+      <article class="card"><div class="ph" style="--c1:#e8b46b;--c2:#a86a2e"></div><h3>Classic pancakes</h3><p>Stack of four with maple syrup.</p><div class="price">₹180</div></article>
+      <article class="card"><div class="ph" style="--c1:#dca25a;--c2:#8f5525"></div><h3>Chocolate waffle</h3><p>Crisp outside, soft inside.</p><div class="price">₹200</div></article>
+      <article class="card"><div class="ph" style="--c1:#f1c98a;--c2:#b9793a"></div><h3>Banana pancakes</h3><p>Sweet and fluffy.</p><div class="price">₹190</div></article>
+    </div>
+    <h3 class="cat">Pastries</h3>
+    <div class="grid">
+      <article class="card"><div class="ph" style="--c1:#f0c987;--c2:#b57a3a"></div><h3>Butter croissant</h3><p>Flaky layers, laminated by hand.</p><div class="price">₹90</div></article>
+      <article class="card"><div class="ph" style="--c1:#f2d3a0;--c2:#c08a4e"></div><h3>Cinnamon bun</h3><p>Warm, sticky and glazed.</p><div class="price">₹110</div></article>
+      <article class="card"><div class="ph" style="--c1:#e9b878;--c2:#a4693a"></div><h3>Danish pastry</h3><p>Custard and fruit.</p><div class="price">₹130</div></article>
+    </div>
+    <h3 class="cat">Cookies and brownies</h3>
+    <div class="grid">
+      <article class="card"><div class="ph" style="--c1:#e6b877;--c2:#a06a35"></div><h3>Choco-chip cookies</h3><p>Box of six.</p><div class="price">₹240</div></article>
+      <article class="card"><div class="ph" style="--c1:#5a3322;--c2:#24140d"></div><h3>Fudge brownies</h3><p>Dense, gooey and rich.</p><div class="price">₹120</div></article>
+      <article class="card"><div class="ph" style="--c1:#d9b48a;--c2:#9a6a3e"></div><h3>Oatmeal cookies</h3><p>Chewy with raisins.</p><div class="price">₹200</div></article>
+    </div>
+  </div>
+</section>
+
+<section class="alt" id="process">
+  <div class="wrap split">
+    <div class="ph" style="--c1:#caa06c;--c2:#6f4a2c"></div>
+    <div>
+      <h2>Our process</h2>
+      <ol class="steps">
+        <li><b>Choose simple ingredients</b><span>Local flour, real butter, free-range eggs.</span></li>
+        <li><b>Let the dough rest</b><span>Time does the work, so flavor builds naturally.</span></li>
+        <li><b>Bake in small batches</b><span>Fewer loaves, better loaves.</span></li>
+        <li><b>Hand it over fresh</b><span>Packed and ready when you arrive.</span></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section class="banner ph" style="--c1:#a5713f;--c2:#3b2416">
+  <h2>Made by hand, every single day</h2>
+</section>
+
+<section class="whole" id="wholesale">
+  <div class="wrap">
+    <h2>Wholesale and custom orders</h2>
+    <p>Supplying a cafe, hosting an event, or planning a birthday? We bake in bulk and design custom cakes. Tell us what you need and we'll reply within a day.</p>
+    <a class="btn" href="#contact">Request a quote</a>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>What people say</h2>
+    <div class="quotes">
+      <blockquote>“The best sourdough in the city. I'm at the counter every Saturday.”<cite>Aarav, regular customer</cite></blockquote>
+      <blockquote>“Our office birthday cake vanished in ten minutes.”<cite>Priya, event planner</cite></blockquote>
+      <blockquote>“Reliable wholesale partner. Fresh bread, always on time.”<cite>Rohan, cafe owner</cite></blockquote>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap">
+    <h2>Follow along</h2>
+    <div class="strip">
+      <div class="ph" style="--c1:#d9a86a;--c2:#8a5a34"></div><div class="ph" style="--c1:#f0c987;--c2:#b57a3a"></div>
+      <div class="ph" style="--c1:#6b3b26;--c2:#2b1a12"></div><div class="ph" style="--c1:#e6b877;--c2:#a06a35"></div>
+      <div class="ph" style="--c1:#5a3322;--c2:#24140d"></div><div class="ph" style="--c1:#f2d3a0;--c2:#c08a4e"></div>
+    </div>
+  </div>
+</section>
+
+<section class="alt" id="contact">
+  <div class="wrap contact">
+    <div>
+      <h2>Visit or get in touch</h2>
+      <p>Bottle Bakery, Your street, Your city</p>
+      <p>Open daily, 7 a.m. to 8 p.m.</p>
+      <p>+91 00000 00000</p>
+      <p>hello@bottlebakery.example</p>
+    </div>
+    <form id="cf">
+      <input name="name" placeholder="Your name" required aria-label="Your name">
+      <input name="phone" type="tel" placeholder="Phone number" required aria-label="Phone number">
+      <input name="email" type="email" placeholder="Email (optional)" aria-label="Email (optional)">
+      <textarea name="msg" placeholder="Tell us what you'd like" required aria-label="Message"></textarea>
+      <div><button class="btn" type="submit">Send message</button></div>
+      <div class="ok" id="ok" role="status"></div>
+    </form>
+  </div>
+</section>
+
+<footer class="site">
+  <div class="wrap">
+    <div class="logo">Bottle Bakery</div>
+    <div class="links">
+      <a href="#menu">Menu</a><a href="#process">Process</a><a href="#wholesale">Wholesale</a><a href="#contact">Contact</a>
+    </div>
+    <small>© 2026 Bottle Bakery. All rights reserved.</small>
+  </div>
+</footer>
+
+<script>
+var lk=document.getElementById('lk');
+document.getElementById('mb').onclick=function(){lk.classList.toggle('open')};
+lk.querySelectorAll('a').forEach(function(a){a.onclick=function(){lk.classList.remove('open')}});
+document.getElementById('cf').onsubmit=function(e){e.preventDefault();document.getElementById('ok').textContent='Thanks! We will reply within a day.';e.target.reset()};
+</script>
+</body>
+</html>
 
