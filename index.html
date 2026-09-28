@@ -47,6 +47,7 @@ nav .wrap{display:flex;justify-content:space-between;align-items:center;height:6
 .marq span{margin:0 28px}
 @keyframes slide{to{transform:translateX(-50%)}}
 @media(prefers-reduced-motion:reduce){.marq div{animation:none}}
+.cat{margin-top:48px;font-size:1.8rem;border-bottom:1px solid #2b1a1233;padding-bottom:8px}
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:28px;margin-top:36px}
 .card .ph{min-height:300px;margin-bottom:14px}
 .card p{color:var(--muted);font-size:.95rem}
@@ -121,13 +122,35 @@ footer.site small{width:100%;color:#b9a892;border-top:1px solid #fff2;padding-to
   <div class="wrap">
     <h2>Our bakes</h2>
     <p style="color:var(--muted)">Pay when you pick up. Ask us about custom cakes.</p>
+    <h3 class="cat">Breads</h3>
     <div class="grid">
-      <article class="card"><div class="ph" style="--c1:#d8a45f;--c2:#8b5a2b"></div><h3>Sourdough loaf</h3><p>Slow-fermented for 24 hours, crackly crust.</p><div class="price">₹180</div></article>
+      <article class="card"><div class="ph" style="--c1:#d8a45f;--c2:#8b5a2b"></div><h3>Sourdough loaf</h3><p>Slow-fermented, crackly crust.</p><div class="price">₹180</div></article>
+      <article class="card"><div class="ph" style="--c1:#e6c48a;--c2:#a5733a"></div><h3>Multigrain loaf</h3><p>Soft, seedy and wholesome.</p><div class="price">₹160</div></article>
+      <article class="card"><div class="ph" style="--c1:#f0d7a8;--c2:#c08a4e"></div><h3>Garlic bread</h3><p>Buttery and toasted.</p><div class="price">₹120</div></article>
+    </div>
+    <h3 class="cat">Cakes</h3>
+    <div class="grid">
+      <article class="card"><div class="ph" style="--c1:#6b3b26;--c2:#2b1a12"></div><h3>Chocolate cake</h3><p>Dark sponge with ganache.</p><div class="price">₹650</div></article>
+      <article class="card"><div class="ph" style="--c1:#f4d9c6;--c2:#d89a8a"></div><h3>Red velvet cake</h3><p>Cream cheese frosting.</p><div class="price">₹700</div></article>
+      <article class="card"><div class="ph" style="--c1:#f7e3a8;--c2:#d9a94a"></div><h3>Pineapple cake</h3><p>Light and fruity.</p><div class="price">₹550</div></article>
+    </div>
+    <h3 class="cat">Pancakes and waffles</h3>
+    <div class="grid">
+      <article class="card"><div class="ph" style="--c1:#e8b46b;--c2:#a86a2e"></div><h3>Classic pancakes</h3><p>Stack of four with maple syrup.</p><div class="price">₹180</div></article>
+      <article class="card"><div class="ph" style="--c1:#dca25a;--c2:#8f5525"></div><h3>Chocolate waffle</h3><p>Crisp outside, soft inside.</p><div class="price">₹200</div></article>
+      <article class="card"><div class="ph" style="--c1:#f1c98a;--c2:#b9793a"></div><h3>Banana pancakes</h3><p>Sweet and fluffy.</p><div class="price">₹190</div></article>
+    </div>
+    <h3 class="cat">Pastries</h3>
+    <div class="grid">
       <article class="card"><div class="ph" style="--c1:#f0c987;--c2:#b57a3a"></div><h3>Butter croissant</h3><p>Flaky layers, laminated by hand.</p><div class="price">₹90</div></article>
-      <article class="card"><div class="ph" style="--c1:#6b3b26;--c2:#2b1a12"></div><h3>Chocolate cake</h3><p>Dark chocolate sponge with ganache.</p><div class="price">₹650</div></article>
-      <article class="card"><div class="ph" style="--c1:#e6b877;--c2:#a06a35"></div><h3>Choco-chip cookies</h3><p>Crisp edges, soft middle. Box of six.</p><div class="price">₹240</div></article>
-      <article class="card"><div class="ph" style="--c1:#5a3322;--c2:#24140d"></div><h3>Fudge brownies</h3><p>Dense, gooey and rich.</p><div class="price">₹120</div></article>
       <article class="card"><div class="ph" style="--c1:#f2d3a0;--c2:#c08a4e"></div><h3>Cinnamon bun</h3><p>Warm, sticky and glazed.</p><div class="price">₹110</div></article>
+      <article class="card"><div class="ph" style="--c1:#e9b878;--c2:#a4693a"></div><h3>Danish pastry</h3><p>Custard and fruit.</p><div class="price">₹130</div></article>
+    </div>
+    <h3 class="cat">Cookies and brownies</h3>
+    <div class="grid">
+      <article class="card"><div class="ph" style="--c1:#e6b877;--c2:#a06a35"></div><h3>Choco-chip cookies</h3><p>Box of six.</p><div class="price">₹240</div></article>
+      <article class="card"><div class="ph" style="--c1:#5a3322;--c2:#24140d"></div><h3>Fudge brownies</h3><p>Dense, gooey and rich.</p><div class="price">₹120</div></article>
+      <article class="card"><div class="ph" style="--c1:#d9b48a;--c2:#9a6a3e"></div><h3>Oatmeal cookies</h3><p>Chewy with raisins.</p><div class="price">₹200</div></article>
     </div>
   </div>
 </section>
